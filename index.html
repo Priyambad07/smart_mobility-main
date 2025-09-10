@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Mobility - Public Transport Tracking</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Leaflet CSS & JS (no API key required) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Login Page -->
+    <section id="login-page" class="active">
+      <div class="login-container">
+        <h1>Smart Mobility</h1>
+        <p>Real-Time Public Transport Tracking for Small Cities</p>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button onclick="login()">Login</button>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="hidden">
+      <nav class="navbar">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('maps')">Maps</button>
+        <button onclick="showPage('analytics')">Analytics</button>
+        <button onclick="showPage('info')">Info</button>
+        <button onclick="showPage('about')">About</button>
+        <button onclick="showPage('emergency')">Emergency</button>
+      </nav>
+
+      <!-- Home -->
+      <div id="home" class="page active">
+        <h2>Welcome to Smart Mobility</h2>
+        <p>We are dedicated to providing reliable and efficient transport solutions. 
+          Our platform connects you with the latest updates, safety alerts, and services to make your journey smooth and informed.</p>
+      </div>
+
+      <!-- Maps -->
+      <div id="maps" class="page hidden">
+        <h2>Live Bus Tracking - Dehradun</h2>
+        <div id="map"></div>
+      </div>
+
+      <!-- Analytics -->
+      <div id="analytics" class="page hidden">
+        <h2>Analytics</h2>
+        <canvas id="myChart"></canvas>
+      </div>
+
+      <!-- Info -->
+      <div id="info" class="page hidden">
+        <h2>Bus Routes & Fares</h2>
+        <table>
+        <tr>
+          <tr><th>Route</th><th>Time</th><th>Fare</th></tr>
+          <tr><td>ISBT → Clock Tower</td><td>20 min</td><td>₹15</td></tr>
+          <tr><td>Clock Tower → Rajpur Road</td><td>25 min</td><td>₹20</td></tr>
+          <tr><td>ISBT → Railway Station</td><td>30 min</td><td>₹18</td></tr>
+          <tr><td>Centrio -> Prem Nagar</td><td>30 min</td><td>₹50</td></tr>
+        </table>
+      </div>
+
+      <!-- About -->
+      <div id="about" class="page hidden">
+        <h2>About Our Solution</h2>
+        <p>We provide an affordable, scalable real-time bus tracking system for small cities like Dehradun.</p>
+        <ul>
+          <li>✔ Live bus location & accurate ETAs</li>
+          <li>✔ Lite mode for SMS/WhatsApp users</li>
+          <li>✔ Safety features for women (Track My Ride, Emergency Alerts)</li>
+          <li>✔ No driver interaction needed, fully automated</li>
+        </ul>
+      </div>
+
+      <!-- Emergency -->
+      <div id="emergency" class="page hidden">
+        <h2>Emergency</h2>
+        <button class="emergency-btn" onclick="triggerEmergency()">🚨 Emergency Alert</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
